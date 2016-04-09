@@ -1,0 +1,122 @@
+body
+{
+   font-family: Raleway;
+   letter-spacing: 1px;
+}
+.grey
+{
+   background-color: #E9E9E9 !important;
+}
+.lightgrey
+{
+   background-color: #F9F9F9;
+}
+.orange
+{
+   background-color: #FF7100;
+   color: #fff;
+}
+.text-white
+{
+   color: #FFF;
+}
+.info-text
+{
+   font-family: Artifika;
+   color: #8B8B8B;
+   font-weight: 100;
+   letter-spacing: 0px;
+}
+.panel-custom
+{
+   line-height: 40px;
+   border-radius: 0 !important;
+}
+.info-price
+{
+   font-weight: bold;
+   font-size: 16pt;
+   font-family: sans-serif;
+}
+.panel-custom > .panel-footer
+{
+   font-weight: bold;
+}
+.btn-flat
+{
+   border-radius: 0 !important;
+   font-size: 10pt;
+   font-weight: 900 !important;
+   padding: 15px;
+}
+
+.text-center
+{
+   text-align: center;
+}
+.registration-heading
+{
+   color: #173c7b;
+}
+.question-column
+{
+   width: 175px;
+   text-align: right;
+   vertical-align: top;
+}
+em
+{
+   color: #5f5f5f;
+}
+.questionInput
+{
+   vertical-align: top;
+   width: 70%;
+}
+.questionInput > .shadow
+{
+   width: 100%;
+}
+.question-column > em
+{
+   font-size: 7pt;
+   text-align: left;
+}
+.clear-selection
+{
+   color: blue;
+   font-style: italic;
+}
+.clear-selection:hover
+{
+   color: navy;
+}
+.numberinput::-webkit-inner-spin-button,
+.numberinput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.agenda-day-container
+{
+   width: 100%;
+   /*border: 1px solid black;*/
+}
+.agenda-head
+{
+   background-color: #111C5A;
+   color: white;
+   text-align: center;
+   width: 100%;
+}
+.agenda-body
+{
+   display: table;
+}
+.agenda-control
+{
+   width: 10px;
+}
+.tab-white
+{
+   background-color: #FFF;
+}

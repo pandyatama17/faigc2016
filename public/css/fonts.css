@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/* CSS Document */
+@font-face {
+    font-family: 'MuseoSans 500';
+    src: url('fonts/MuseoSans_500-webfont.eot');
+    src: url('fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/MuseoSans_500-webfont.woff') format('woff'),
+    url('fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+    url('fonts/MuseoSans_500-webfont.svg#MuseoSans500Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'helvetica neue';
+    src: url('fonts/helveticaneue-webfont.eot');
+    src: url('fonts/helveticaneue-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/helveticaneue-webfont.woff') format('woff'),
+    url('fonts/helveticaneue-webfont.ttf') format('truetype'),
+    url('fonts/helveticaneue-webfont.svg#webfont33RR7Kfq') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'toyotadisplayrg';
+    src: url('fonts/toyotadisplayrg-webfontwoff.eot');
+    src: url('fonts/toyotadisplayrg-webfontwoff.eot?#iefix') format('embedded-opentype'),
+    url('fonts/toyotadisplayrg-webfontwoff.woff') format('woff'),
+    url('fonts/toyotadisplayrg-webfontwoff.ttf') format('truetype'),
+    url('fonts/toyotadisplayrg-webfontwoff.svg#webfont33RR7Kfq') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'toyotadisplayrg'; /* bold */
+    src: url('fonts/toyotadisplayrg_bold-webfontwoff.eot');
+    src: url('fonts/toyotadisplayrg_bold-webfontwoff.eot?#iefix') format('embedded-opentype'),
+    url('fonts/toyotadisplayrg_bold-webfontwoff.woff') format('woff'),
+    url('fonts/toyotadisplayrg_bold-webfontwoff.ttf') format('truetype'),
+    url('fonts/toyotadisplayrg_bold-webfontwoff.svg#webfont33RR7Kfq') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('fonts/centurygothic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('fonts/centurygothicb.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Code39';
+    src: url('fonts/code39.eot');
+    src: url('fonts/code39.eot?#iefix') format('embedded-opentype'),
+    url('fonts/code39.woff2') format('woff2'),
+    url('fonts/code39.woff') format('woff'),
+    url('fonts/code39.ttf') format('truetype'),
+    url('fonts/code39.svg#Code39-hoch-Logitogo') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('fonts/MuseoSans_500-webfont.eot');
+    src: url('fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/MuseoSans_500-webfont.woff') format('woff'),
+    url('fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+    url('fonts/MuseoSans_500-webfont.svg#MuseoSans500Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('fonts/museosans_700-webfont.eot');
+    src: url('fonts/museosans_700-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/museosans_700-webfont.woff') format('woff'),
+    url('fonts/museosans_700-webfont.ttf') format('truetype'),
+    url('fonts/museosans_700-webfont.svg#MuseoSans700') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
