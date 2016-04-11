@@ -153,13 +153,13 @@ class RegistrationController extends Controller {
 				$s->email = Input::get('email_'.$i);
 				$s->save();
 			}
-
-			$arr = array('msg' => 'ajax request success', 'items'=>Input::all(), 'err'=>false );
+			// Session::put('cost', $r->cost);
+			$arr = array('msg' => 'ajax request success', 'items'=>Input::all(), 'err'=>false , 'id'=>$m->id);
 			echo json_encode($arr);
 		}
 		catch (Exception $e)
 		{
-			$arr = array('msg' => 'ajax request failed', 'items'=>Input::all(), 'err'=>true );
+			$arr = array('msg' => 'ajax request failed', 'items'=>Input::all(), 'err'=>true, 'id'=> null );
 			echo json_encode($arr);
 		}
 
@@ -208,6 +208,11 @@ class RegistrationController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
+	 public function later($id)
+	 {
+	 	# code...
+	 }
+
 	public function edit($id)
 	{
 		//

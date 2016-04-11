@@ -1,14 +1,5 @@
-$(document).ready(function() {
-   // $("#registrationForm").steps(
-   // {
-   //     bodyTag:"fieldset",
-   //     transitionEffect: "slideLeft",
-   //     // enablePagination:false
-   //     onStepChanged: function(event, currentIndex)
-   //     {
-   //           adjustStepHeight();
-   //     }
-   // });
+$(document).ready(function()
+{
    $("#registrationForm").steps(
       {
         bodyTag: "fieldset",
@@ -151,7 +142,7 @@ $(document).ready(function() {
                      },function()
                      {
                         console.log(obj.items);
-                        // window.location.replace('/registration/success&id='+obj.items['id']);
+                        window.location.replace('/registration/success&id='+obj.id);
                      });
                   }
                   else
@@ -173,7 +164,7 @@ $(document).ready(function() {
    {
       cost = $(this).data('cost');
       $("#totalcost").text(rupiah($(this).data('cost')));
-      $("#cost_input").text($(this).data('cost'));
+      $("#costinput").text($(this).data('cost'));
       $("#member_type").val($(this).val());
    });
 
@@ -218,7 +209,9 @@ $(document).ready(function() {
     {
          $('#phoneFix').val($(this).intlTelInput('getNumber'));
     });
-
+    $("#file").change(function(){
+       readURL(this);
+   });
 
       // sub atendee
 
@@ -273,7 +266,7 @@ $(document).ready(function() {
           cost = (personCost+cost);
           console.log(cost);
           $("#totalcost").text(rupiah(cost));
-          $("#cost").val(cost);
+          $("#costinput").val(cost);
           $("#countdata").val(clicked);
           $(this).hide();
           $("#addperson_button").show();
@@ -363,7 +356,7 @@ $(document).ready(function() {
          var rooms = $("#rooms").val();
          cost = ((staticCost*1)+(((3000000*daysStay))*rooms));
          $("#totalcost").html(rupiah(cost));
-         $("#cost").val(cost);
+         $("#costinput").val(cost);
          console.clear();
          console.log('registration fee : '+cost+'\nDays Stay : '+daysStay+'\nRooms : '+rooms);
       });
@@ -466,10 +459,15 @@ function adjustStepHeight()
               )
    });
 
-   if (stepNumber == 1 || stepNumber == 3 || stepNumber == 4)
+   if (stepNumber == 1)
    {
       //add vertical padding to the sum variable
-      sum += (parseInt($("#registrationForm-p-"+stepNumber).css("padding-top")))*15;
+      sum += (parseInt($("#registrationForm-p-"+stepNumber).css("padding-top")))*22;
+   }
+   else if (stepNumber == 3 || stepNumber == 4)
+   {
+      //add vertical padding to the sum variable
+      sum += (parseInt($("#registrationForm-p-"+stepNumber).css("padding-top")))*16;
    }
    else
    {
@@ -525,4 +523,16 @@ function verifyEmail()
       $("#registype_email").closest('.form-group').addClass("has-error");
       swal("Oops..","Please enter a valid email","warning");
    }
+}
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#img-preview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
 }

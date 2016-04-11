@@ -1,6 +1,7 @@
 @extends('layouts.bootstrap.container')
 
 @section('page')
+   <link rel="stylesheet" href="{{asset('plugins/swal/dist/sweetalert.css')}}">
    <div class="col-md-8 col-md-offset-2">
       <center><h1>Registration Success!</h1></center>
       <br>
@@ -42,6 +43,27 @@
       </div>
       <a href="{{url('home')}}" class="btn btn-primary pull-right">Continue to payment</a>
       &nbsp;
-      <a href="{{url('home')}}" class="btn btn-danger">Redirect to Home</a>
+      <a class="btn btn-danger" id="payment-later">Later</a>
    </div>
+   <script src="{{asset('plugins/swal/dist/sweetalert.min.js')}}" charset="utf-8"></script>
+   <script type="text/javascript">
+      $(document).ready(function()
+      {
+         $("#payment-later").click(function()
+         {
+            swal({
+               title :  "Are you sure?",
+               text  :  "Continue Payment later? we will email you a link to complete your payment",
+               type  :  "warning",
+               confirmButtonColor: "#D9534F",
+               confirmButtonText: "Ok",
+               closeOnConfirm: false
+            },function()
+            {
+               window.location.replace("/payment/later&id={{$rs->id}}");
+            })
+         });
+      });
+
+   </script>
 @endsection

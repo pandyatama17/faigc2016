@@ -43,9 +43,9 @@
             <h2>Dinner Reservation</h2>
             @include('registration.forms.dinner')
          </fieldset>
-         <h1>Aditional Attendees</h1>
+         <h1>Additional Attendees</h1>
          <fieldset>
-            <h2>Aditional Attendees</h2>
+            <h2>Additional Attendees</h2>
             @include('registration.forms.aditionalattendee')
          </fieldset>
          <h1>Hotel Reservation</h1>
@@ -69,6 +69,7 @@
             <h2>Registration Record</h2>
          </fieldset>
          <input type="hidden" name="_token" value="{{csrf_token()}}">
+         <input type="hidden" name="costinput" value="">
       </form>
       <div class="col-md-12">
          <div class="pull-left lead">Total Cost : <span id="totalcost"><span></div>
@@ -98,6 +99,7 @@
                console.log(costSession);
                $("#member_type").val("{{Session::get('registype')}}");
                $("#totalcost").text(rupiah(cost));
+               $("#costinput").val(cost);
          @endif
 
        var staticCost = "{{Session::get('cost')}}";

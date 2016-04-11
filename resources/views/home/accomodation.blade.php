@@ -67,8 +67,8 @@
     </div>
   </div>
 </div>
-
-
-   <script src="{{asset('plugins/photo-gallery/photo-gallery.js')}}" charset="utf-8"></script>
-
+<script src="{{asset('plugins/photo-gallery/photo-gallery.js')}}" charset="utf-8"></script>
+<script type="text/javascript">
+   document.title = "FAI GENERAL CONFERENCE 2016 BALI | Accomodation"
+</script>
 @endsection

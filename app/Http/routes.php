@@ -124,3 +124,8 @@ Route::get('registration/verifyemail&email={mail}', function ($mail)
    echo json_encode($arr);
 });
 Route::get('/registration/success&id={id}', 'RegistrationController@show');
+Route::get('/payment/later&id={id}', 'RegistrationController@later');
+Route::get('/showdummyemail/payment-later', function()
+{
+   return view('mail.payment-later');
+});

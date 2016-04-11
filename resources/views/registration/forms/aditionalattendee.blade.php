@@ -1,5 +1,5 @@
 <div class="form-group">
-   <label class="col-sm-3 control-label">Register aditional atendee?<span class="red">*</span></label>
+   <label class="col-sm-3 control-label">Register additional attendee?<span class="red">*</span></label>
    <div class="col-sm-9">
       <div class="radio">
          <label>

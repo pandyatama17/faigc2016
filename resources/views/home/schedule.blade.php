@@ -142,4 +142,7 @@
          </tr>
       </tbody>
    </table>
+   <script type="text/javascript">
+      document.title = "FAI GENERAL CONFERENCE 2016 BALI | Conference Schedule"
+   </script>
 @endsection

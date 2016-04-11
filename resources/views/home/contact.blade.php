@@ -15,4 +15,7 @@
          <abbr title="Email">E</abbr>: <a href="mailto:secretariat@faigc2016bali.com">secretariat@faigc2016bali.com</a>
       </address>
    </div>
+   <script type="text/javascript">
+      document.title = "FAI GENERAL CONFERENCE 2016 BALI | Contact Page"
+   </script>
 @endsection

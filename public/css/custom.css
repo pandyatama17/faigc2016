@@ -621,3 +621,8 @@ footer
 .file-control + label * {
 	pointer-events: none;
 }
+
+.img-preview
+{
+   height: 200px;
+}

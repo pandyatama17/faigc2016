@@ -218,6 +218,9 @@
       <label for="file"><i class="fa fa-upload"></i> Choose a file</label>
       <p class="help-block">will be used for your badge, please send your passport size of photograph</p>
    </div>
+   <div class="col-sm-9 col-sm-offset-3">
+      <img  id="img-preview" src="" alt="" class="img-preview img-responsive" />
+   </div>
 </div>
 <input type="hidden" name="member_type" value="{{Session::get('member_type')}}">
 <input type="hidden" name="cost" value="{{Session::get('cost')}}">
