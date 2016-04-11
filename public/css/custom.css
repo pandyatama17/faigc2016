@@ -1,6 +1,7 @@
 body
 {
    padding: 0 px !important;
+   height: 100% !important;
 }
 .jumbotron-custom
 {
@@ -297,6 +298,10 @@ body { margin: 10px; }
 
 .footer
 {
+   position:absolute;
+  bottom:0 !important;
+  width:100%;
+  background:#6cf;
    background-color: #000;
    width: 100%;
 }
@@ -625,4 +630,17 @@ footer
 .img-preview
 {
    height: 200px;
+}
+
+body div#preloader
+{
+   position: fixed;
+   left: 0;
+   top: 0;
+   z-index: 999;
+   width: 100%;
+   height: 100%;
+   overflow: visible;
+   background: rgba(0, 0, 0, 0.6)
+               url('/plugins/preloader/animate.gif') no-repeat center center;
 }

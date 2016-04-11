@@ -25,7 +25,9 @@
             <br>
             payment with bank transfer please mention your registration
             <br>
-            identification code bank’s transfer form.
+            identification code into the Bank transfer form.
+            <br><br>
+            <span class="red">Time limit for early payment is before 1<sup>st</sup> of July 2016</span>
             <br><br>
             your payment link is <u><strong><a href="{{url('payment/dopayment&id='.$rs->id)}}">{{url('payment/dopayment&id='.$rs->id)}}</a></strong></u>
             <br><br>
@@ -41,9 +43,9 @@
             <br><br>
          </p>
       </div>
-      <a href="{{url('payment/dopayment&id='.$rs->id)}}" class="btn btn-primary pull-right">Continue to payment</a>
+      {{-- <a href="{{url('payment/dopayment&id='.$rs->id)}}" class="btn btn-primary pull-right">Continue to payment</a>
       &nbsp;
-      <a class="btn btn-danger" id="payment-later">Later</a>
+      <a class="btn btn-danger" id="payment-later">Later</a> --}}
    </div>
    <script src="{{asset('plugins/swal/dist/sweetalert.min.js')}}" charset="utf-8"></script>
    <script type="text/javascript">

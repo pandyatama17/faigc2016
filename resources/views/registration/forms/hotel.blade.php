@@ -25,18 +25,14 @@
          <div class="form-group">
             <label class="col-sm-3 control-label">Preference<span class="red">*</span></label>
             <div class="col-sm-9">
-               <div class="radio">
-                  <label>
-                     <input type="radio" name="preference" id="preference_single" value="single">
-                     Single
-                  </label>
-               </div>
-               <div class="radio">
-                  <label>
-                     <input type="radio" name="preference" id="preference_double" value="double">
-                     Double
-                  </label>
-               </div>
+                  <label class="radio-inline">
+                     <input type="radio" name="preference" class="flat-green" id="preference_twin" value="twin">
+                     Twin Bed
+                  </label class="radio-inline">
+                  <label class="radio-inline">
+                     <input type="radio" name="preference" class="flat-green" id="preference_double" value="double">
+                     Double Bed
+                  </label class="radio-inline">
             </div>
          </div>
          <div class="form-group">

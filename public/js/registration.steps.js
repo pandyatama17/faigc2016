@@ -79,7 +79,8 @@ $(document).ready(function()
         },
         onInit:function (event, currentIndex)
         {
-           adjustStepHeight();
+         //   adjustStepHeight();
+         $(".wizard > .content").css("height",800);
         }
     })
     .validate(
@@ -123,15 +124,18 @@ $(document).ready(function()
        {
           if ($(form).valid())
           {
+             showPreloader();
              $(form).ajaxSubmit({
                 url:$(this).attr('action'),
                 type: 'POST',
                 data: $(this).serialize(),
                 success: function(data)
                 {
+                   hidePreloader();
                    var obj = jQuery.parseJSON(data);
                    if(obj.err == false)
                    {
+                      console.log(obj.items);
                       swal({
                         title: "Success!",
                         text: obj.msg,
@@ -141,7 +145,7 @@ $(document).ready(function()
                         closeOnConfirm: true
                      },function()
                      {
-                        console.log(obj.items);
+                        showPreloader();
                         window.location.replace('/registration/success&id='+obj.id);
                      });
                   }
@@ -165,7 +169,7 @@ $(document).ready(function()
       cost = $(this).data('cost');
       $("#totalcost").text(rupiah($(this).data('cost')));
       $("#costinput").val(cost);
-      $("#member_type").val($(this).val());
+      $("#regist_type").val($(this).data('type'));
    });
 
    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
@@ -417,10 +421,13 @@ $(document).ready(function()
           hideOffset : 10,
        });
 
-         $(".wizard > .content").css("overflow-y",'scroll');
+         // $(".wizard > .content").css("overflow-y",'scroll');
          $("#action-next").hide();
          $("#action-previous").hide();
          $("#action-finish").hide();
+
+         $(".wizard > .content").css("height",650);
+
 });
 
 // more other functions
@@ -469,6 +476,11 @@ function adjustStepHeight()
       //add vertical padding to the sum variable
       sum += (parseInt($("#registrationForm-p-"+stepNumber).css("padding-top")))*16;
    }
+   else if (stepNumber == 0)
+   {
+      //add vertical padding to the sum variable
+      $(".wizard > .content").css("height",650);
+   }
    else
    {
       sum += (parseInt($("#registrationForm-p-"+stepNumber).css("padding-top")))*2;
@@ -485,6 +497,7 @@ function verifyEmail()
 {
    if (isEmail($("#registype_email").val()))
    {
+      showPreloader();
       $.get( "registration/verifyemail&email="+$("#registype_email").val(), function( data )
       {
          obj = $.parseJSON(data)
@@ -492,6 +505,7 @@ function verifyEmail()
          console.log(obj.valid);
          if (obj.valid == true)
          {
+            hidePreloader();
             swal({
                title :  "Valid",
                text  :  "this email is valid!",
@@ -505,6 +519,7 @@ function verifyEmail()
          }
          else
          {
+            hidePreloader();
             swal({
                title :  "Failed",
                text  :  "this email has been registered!",
@@ -535,4 +550,14 @@ function readURL(input) {
 
         reader.readAsDataURL(input.files[0]);
     }
+}
+function showPreloader()
+{
+   $("#preloader").show();
+   $("#mainNavbar").hide();
+}
+function hidePreloader()
+{
+   $("#preloader").hide();
+   $("#mainNavbar").show();
 }

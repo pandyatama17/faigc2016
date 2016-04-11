@@ -124,6 +124,7 @@ Route::get('registration/verifyemail&email={mail}', function ($mail)
    echo json_encode($arr);
 });
 Route::get('/registration/success&id={id}', 'RegistrationController@show');
+Route::get('/registration/{id}/success', 'RegistrationController@success');
 Route::get('/payment/later&id={id}', 'RegistrationController@later');
 Route::get('/showdummypage/payment-later', function()
 {
@@ -135,3 +136,8 @@ Route::get('/showdummypage/payment', function()
    ->with('pagin', 'registration');
 });
 Route::get("/payment/dopayment&id={id}", 'RegistrationController@payment');
+Route::any("/payment/success",function()
+{
+   return view('registration.forms.notif')
+   ->with('pagin', 'registration');
+});

@@ -23,6 +23,39 @@
                     <img src="{{asset('images/sponsors/nikon.jpg')}}" alt="" class="img-sponsor"/>
                     <img src="{{asset('images/sponsors/adidas.png')}}" alt="" class="img-sponsor"/>
                     <img src="{{asset('images/sponsors/intel.png')}}" alt="" class="img-sponsor"/> --}}
+                    <p>
+                       Become our Partner at FAIGC 2016 - BALI !
+
+Being a sponsor at the 101 FAI General Conference 2016, The Westin
+
+Hotel &amp; Resort Nusa Dua Bali Indonesia, provides you with a unique
+
+opportunity to communicate with thought leaders, established players
+
+and prospective customers in niche areas of FAI organization and
+
+members.
+
+The event participants are executives and unique  from the industry &amp;
+
+member of aero sport around the world. Many of these participants are
+
+repeaters who know each other.
+
+For a company looking for a window into such an elite gathering,
+
+there could be no better opportunity!
+
+Sponsoring the conference gives you the chance to rub shoulders with
+
+the elite in the industry. Want to know more? Get in touch!
+
+We ensure that you, as our partners benefit to the utmost in terms of
+
+exposure and involvement. Look forward to see you at Bali.
+
+For more information please contact Us.
+                    </p>
                 </div>
                 <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
                     <h3> View us on </h3>

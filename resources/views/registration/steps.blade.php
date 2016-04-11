@@ -68,7 +68,7 @@
          <fieldset id="registrationRecord">
             <h2>Registration Record</h2>
          </fieldset>
-         <input type="text" name="kontol" id="costinput" value="">
+         <input type="hidden" name="kontol" id="costinput" value="">
          <input type="hidden" name="_token" value="{{csrf_token()}}">
       </form>
       <div class="col-md-12">
@@ -80,6 +80,7 @@
          </div>
       </div>
    </div>
+
    <script src="{{asset('js/registration.steps.js')}}" charset="utf-8"></script>
    <script type="text/javascript">
      $(document).ready(function()
@@ -97,7 +98,7 @@
                }
                costSession = cost;
                console.log(costSession);
-               $("#member_type").val("{{Session::get('registype')}}");
+               $("#regist_tpye").val("{{Session::get('registype')}}");
                $("#totalcost").text(rupiah(cost));
                $("#costinput").val(cost);
          @endif

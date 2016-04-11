@@ -14,6 +14,9 @@ use Input;
 use File;
 use Image;
 use Session;
+use Mail;
+use Str;
+use Redirect;
 
 class RegistrationController extends Controller {
 
@@ -51,7 +54,7 @@ class RegistrationController extends Controller {
 	{
 		$m = new Member;
 		$m->email = $r->email;
-		$m->member_type = $r->member_type;
+		$m->member_type = $r->regist_type;
 		$m->title = $r->title;
 		$m->first_name = $r->first_name;
 		$m->family_name = $r->last_name;
@@ -71,7 +74,7 @@ class RegistrationController extends Controller {
 		$m->passport_number = $r->passport_number;
 		$m->dietary_request = $r->dietary_request;
 		$m->dietary_request_other = $r->dietary_request_other;
-		$m->avatar = $r->file;
+		$m->avatar = $r->file('file')->getClientOriginalName();
 		$m->key = str_random(8);
 		$m->cost = $r->kontol;
 
@@ -81,7 +84,7 @@ class RegistrationController extends Controller {
 			$savepath = public_path('images/members/'.$file->getClientOriginalName());
 			Image::make($file->getRealPath())->resize('200','200')->save($savepath);
 
-		  	$m->save();
+			 	$m->save();
 
 			if($r->program_2 == 1)
 			{
@@ -156,12 +159,12 @@ class RegistrationController extends Controller {
 				$s->save();
 			}
 			// Session::put('cost', $r->cost);
-			$arr = array('msg' => 'ajax request success', 'items'=>Input::all(), 'err'=>false , 'id'=>$m->id);
+			$arr = array('msg' => 'Registration success', 'items'=>Input::all(), 'err'=>false , 'id'=>$m->id);
 			echo json_encode($arr);
 		}
 		catch (Exception $e)
 		{
-			$arr = array('msg' => 'ajax request failed', 'items'=>Input::all(), 'err'=>true, 'id'=> null );
+			$arr = array('msg' => 'Registration failed, please contact us to re-register if you can&#39;t ', 'items'=>Input::all(), 'err'=>true, 'id'=> null );
 			echo json_encode($arr);
 		}
 
@@ -177,31 +180,29 @@ class RegistrationController extends Controller {
 	{
 		$recipient = Member::find($id);
 
-		// if ($recipient->cc_email == "")
-		// {
-		// 	Mail::send('mail.registration_success', array('title'=>$recipient->title,'first_name'=>$recipient->first_name,'family_name'=>$recipient->family_name,'key'=>$recipient->key), function($message)
-		// 	{
-		// 		$recipient = Member::find(Session::get('uid'));
-	   //      	$message->to($recipient->email, $recipient->first_name.' '.$recipient->family_name)
-		// 		// ->bcc('secretariatfasi@gmail.com')
-		// 		->subject('Confirmation 110th FAI Conference, Bali – Indonesia');
-	   //  	});
-		// }
-		// else
-		// {
-		// 	Mail::send('mail.registration_success', array('title'=>$recipient->title,'first_name'=>$recipient->first_name,'family_name'=>$recipient->family_name,'key'=>$recipient->key), function($message)
-		// 	{
-		// 		$recipient = Member::find(Session::get('uid'));
-	   //      	$message->to($recipient->email, $recipient->first_name.' '.$recipient->family_name)
-		// 		// ->bcc('secretariatfasi@gmail.com')
-		// 		->cc($recipient->cc_email,'CC Email')
-		// 		->subject('Confirmation 110th FAI Conference, Bali – Indonesia');
-	   //  	});
-		// }
+		if ($recipient->cc_email == "")
+		{
+			Mail::send('mail.registration_success', array('title'=>$recipient->title,'first_name'=>$recipient->first_name,'family_name'=>$recipient->family_name,'key'=>$recipient->key,'id'=>$id), function($message)
+			{
+				$recipient = Member::find(Session::get('uid'));
+	        	$message->to($recipient->email, $recipient->first_name.' '.$recipient->family_name)
+				->bcc('secretariatfasi@gmail.com')
+				->subject('Confirmation 110th FAI Conference, Bali – Indonesia');
+	    	});
+		}
+		else
+		{
+			Mail::send('mail.registration_success', array('title'=>$recipient->title,'first_name'=>$recipient->first_name,'family_name'=>$recipient->family_name,'key'=>$recipient->key,'id'=>$id), function($message)
+			{
+				$recipient = Member::find(Session::get('uid'));
+	        	$message->to($recipient->email, $recipient->first_name.' '.$recipient->family_name)
+				->bcc('secretariatfasi@gmail.com')
+				->cc($recipient->cc_email,'CC Email')
+				->subject('Confirmation 110th FAI Conference, Bali – Indonesia');
+	    	});
+		}
 
-		return view('registration.forms.success')
-		->with('rs', $recipient)
-		->with('pagin', 'registration');
+		return Redirect::to('registration/'.$id.'/success');
 	}
 
 	/**
@@ -219,11 +220,24 @@ class RegistrationController extends Controller {
 	{
 		$m = Member::find($id);
 
-		Session::put('cc_cost', ($m->cost+($m->cost*0.0363)));
+		$cc_cost = ($m->cost+($m->cost*0.0363));
+		Session::put('cc_cost', $cc_cost);
+		$words = sha1($m->cost.'.00'.'d9R2g8E6B3r5'.'000'.$m->id);
 
 		return view('registration.forms.payment')
 		->with('m', $m)
+		->with('words', $words)
 	   ->with('pagin', 'registration');
+	}
+	public function success($id)
+	{
+		$m = Member::find($id);
+
+		Session::put('uid', $id);
+
+		return view('registration.forms.success')
+		->with('rs', $m)
+		->with('pagin', 'registration');
 	}
 	public function edit($id)
 	{

@@ -2,6 +2,8 @@
    @include('layouts.bootstrap.head')
 </head>
 <body>
+   <div id="preloader"></div>
+
    <nav class="navbar navbar-inverse navbar-custom navbar-fixed-top" id="mainNavbar">
       <div class="page-heading">
          <div class="container" id="pageHeadingContainer">
@@ -59,11 +61,11 @@
 <br><br><br><br>
 <br><br><br><br>
 <div class="clearfix"></div>
-<div class="container">
+<div class="container" style="height:100%">
    @yield('page')
 </div>
 <br><br><br><br>
-<br><br>
+<div class="clearfix"></div>
 @include('layouts.bootstrap.footer')
 </body>
 <script type="text/javascript">
@@ -73,6 +75,8 @@ $(document).ready(function() {
    $('#countdown').tinyTimer({ to: d, format: '<span class="label label-faigc text-right">%d D</span> &nbsp;<span class="label label-faigc text-right">%h hrs</span>&nbsp;<span class="label label-faigc text-right">%m mins</span>&nbsp;<span class="label label-faigc text-right">%s sec</span>' });
 
     $('[data-toggle="tooltip"]').tooltip({html: true});
+
+    $("#preloader").hide();
 });
 
 </script>

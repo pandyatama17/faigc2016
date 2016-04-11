@@ -97,13 +97,11 @@
             <td class="haslist">
                <ul>
                   <li>Nusantara room</li>
-                  <li><i>*Tentative : By Governor</i></li>
                </ul>
             </td>
             <td class="haslist">
                <ul>
                   <li>Plenary Session</li>
-                  <li>Informal Dinner</li>
                </ul>
             </td>
          </tr>
