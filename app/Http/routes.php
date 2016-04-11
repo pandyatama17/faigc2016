@@ -125,7 +125,13 @@ Route::get('registration/verifyemail&email={mail}', function ($mail)
 });
 Route::get('/registration/success&id={id}', 'RegistrationController@show');
 Route::get('/payment/later&id={id}', 'RegistrationController@later');
-Route::get('/showdummyemail/payment-later', function()
+Route::get('/showdummypage/payment-later', function()
 {
    return view('mail.payment-later');
 });
+Route::get('/showdummypage/payment', function()
+{
+   return view('registration.forms.payment')
+   ->with('pagin', 'registration');
+});
+Route::get("/payment/dopayment&id={id}", 'RegistrationController@payment');

@@ -49,11 +49,7 @@
             <label for="" class="col-sm-3 control-label">Check out</label>
             <div class="col-sm-9">
                <input  type="text" name="checkout" class="form-control datepicker" id="checkout" placeholder="Check out date">
-            </div>
-         </div>
-         <div class="form-group">
-            <div class="col-sm-9 col-sm-offset-3">
-               <span class="help-block">You will stay for <span id="totaldays"></span> night(s)</span>
+               <p class="help-block">You will stay for <span id="totaldays"></span> night(s)</p>
             </div>
          </div>
       </div>

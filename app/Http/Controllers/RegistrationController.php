@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Input;
 use File;
 use Image;
+use Session;
 
 class RegistrationController extends Controller {
 
@@ -72,6 +73,7 @@ class RegistrationController extends Controller {
 		$m->dietary_request_other = $r->dietary_request_other;
 		$m->avatar = $r->file;
 		$m->key = str_random(8);
+		$m->cost = $r->kontol;
 
 		try
 		{
@@ -213,6 +215,16 @@ class RegistrationController extends Controller {
 	 	# code...
 	 }
 
+	public function payment($id)
+	{
+		$m = Member::find($id);
+
+		Session::put('cc_cost', ($m->cost+($m->cost*0.0363)));
+
+		return view('registration.forms.payment')
+		->with('m', $m)
+	   ->with('pagin', 'registration');
+	}
 	public function edit($id)
 	{
 		//

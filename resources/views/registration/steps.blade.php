@@ -68,8 +68,8 @@
          <fieldset id="registrationRecord">
             <h2>Registration Record</h2>
          </fieldset>
+         <input type="text" name="kontol" id="costinput" value="">
          <input type="hidden" name="_token" value="{{csrf_token()}}">
-         <input type="hidden" name="costinput" value="">
       </form>
       <div class="col-md-12">
          <div class="pull-left lead">Total Cost : <span id="totalcost"><span></div>

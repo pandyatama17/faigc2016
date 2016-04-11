@@ -19,8 +19,6 @@
 
             Thank you for registering to attend the 110<sup>th</sup>  FAI Conference on 13<sup>th</sup> &ndash; 15<sup>th</sup> 2016
             <br><br>
-            This e-mail is a confirmation of your registration only and not a proof <br>of your payment settlement.
-            <br><br>
             Your registration identification is : <span style="color:black;text-decoration:underline; -moz-text-decoration-color: #092567; text-decoration-color: #092567;"><b>{{$rs->key}}</b></span>. 
             <br><br>
             Please continue with the payment process. If you choose to make the
@@ -28,6 +26,8 @@
             payment with bank transfer please mention your registration
             <br>
             identification code bank’s transfer form.
+            <br><br>
+            your payment link is <u><strong><a href="{{url('payment/dopayment&id='.$rs->id)}}">{{url('payment/dopayment&id='.$rs->id)}}</a></strong></u>
             <br><br>
             We will send you an email of payment confirmation after we received
             <br>
@@ -41,7 +41,7 @@
             <br><br>
          </p>
       </div>
-      <a href="{{url('home')}}" class="btn btn-primary pull-right">Continue to payment</a>
+      <a href="{{url('payment/dopayment&id='.$rs->id)}}" class="btn btn-primary pull-right">Continue to payment</a>
       &nbsp;
       <a class="btn btn-danger" id="payment-later">Later</a>
    </div>

@@ -164,7 +164,7 @@ $(document).ready(function()
    {
       cost = $(this).data('cost');
       $("#totalcost").text(rupiah($(this).data('cost')));
-      $("#costinput").text($(this).data('cost'));
+      $("#costinput").val(cost);
       $("#member_type").val($(this).val());
    });
 
