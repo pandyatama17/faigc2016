@@ -17,6 +17,7 @@ use Session;
 use Mail;
 use Str;
 use Redirect;
+use App\Hotel;
 
 class RegistrationController extends Controller {
 
@@ -179,14 +180,14 @@ class RegistrationController extends Controller {
 	public function show($id)
 	{
 		$recipient = Member::find($id);
-
+		Session::put('uid', $id);
 		if ($recipient->cc_email == "")
 		{
 			Mail::send('mail.registration_success', array('title'=>$recipient->title,'first_name'=>$recipient->first_name,'family_name'=>$recipient->family_name,'key'=>$recipient->key,'id'=>$id), function($message)
 			{
 				$recipient = Member::find(Session::get('uid'));
 	        	$message->to($recipient->email, $recipient->first_name.' '.$recipient->family_name)
-				->bcc('secretariatfasi@gmail.com')
+				// ->bcc('secretariatfasi@gmail.com')
 				->subject('Confirmation 110th FAI Conference, Bali – Indonesia');
 	    	});
 		}
@@ -196,7 +197,7 @@ class RegistrationController extends Controller {
 			{
 				$recipient = Member::find(Session::get('uid'));
 	        	$message->to($recipient->email, $recipient->first_name.' '.$recipient->family_name)
-				->bcc('secretariatfasi@gmail.com')
+				// ->bcc('secretariatfasi@gmail.com')
 				->cc($recipient->cc_email,'CC Email')
 				->subject('Confirmation 110th FAI Conference, Bali – Indonesia');
 	    	});
@@ -222,11 +223,60 @@ class RegistrationController extends Controller {
 
 		$cc_cost = ($m->cost+($m->cost*0.0363));
 		Session::put('cc_cost', $cc_cost);
-		$words = sha1($m->cost.'.00'.'d9R2g8E6B3r5'.'000'.$m->id);
+
+		if($m->member_type == 1)
+		{
+			$price_reg = 5181500;
+			$basket = "FAIGC 2016 Delegate Registration,5181500.00,1,5181500.00;";
+		}
+		elseif($m->member_type == 9)
+		{
+			$price_reg = 3108900;
+			$basket = "FAIGC 2016 Companion Registration,3108900.00,1,3108900.00;";
+		}
+
+		$subs = count(SubAttendee::where('parent_id','=',$id)->get());
+		if($subs > 0)
+		{
+			$unformattedprice_subs = $subs*3108900;
+			$price_subs = number_format($subs*3108900, 2, '.', '');
+			$basket .="Additional Attendee,3108900.00,".$subs.",".$price_subs.";";
+		}
+		else
+		{
+			$unformattedprice_subs = 0;
+			$price_subs = 0;
+		}
+		$hotel = HotelBooking::find($id);
+		if ($hotel != null)
+		{
+			$hotel_days = date_diff(date_create($hotel->check_out), date_create($hotel->check_in))->format("%a");
+			$hotel_rooms = $hotel->rooms;
+			$getHotel = Hotel::find($hotel->hotel_id);
+			$hotel_cost = /*$getHotel->cost+($getHotel->cost*0.363)*/ 3108900;
+
+			$price_hotel = $hotel_cost*$hotel_days*$hotel_rooms;
+			$basket .="Hotel Accommodation,".number_format($hotel_cost, 2, '.', '').",".$hotel_days*$hotel_rooms.",".number_format($price_hotel, 2, '.', '').";";
+		}
+		else
+		{
+			$price_hotel = 0;
+		}
+
+		$amount = $price_reg+$unformattedprice_subs+$price_hotel;
+		$words = sha1($amount.'.00'.'d9R2g8E6B3r5'.$m->key);
+
+		$nonhashedwords = $price_reg+$unformattedprice_subs.'.00'.' d9R2g8E6B3r5 '.$m->key;
+
+		// return "night(s) stay: "$hotel_days." rooms: ".$hotel_rooms." price: ".$hotel_cost ;
+		// return $price_hotel;
+		// return $nonhashedwords."<br><br>".$basket;
 
 		return view('registration.forms.payment')
 		->with('m', $m)
 		->with('words', $words)
+		->with('basket', $basket)
+		->with('amount', $amount)
 	   ->with('pagin', 'registration');
 	}
 	public function success($id)
@@ -238,6 +288,11 @@ class RegistrationController extends Controller {
 		return view('registration.forms.success')
 		->with('rs', $m)
 		->with('pagin', 'registration');
+	}
+
+	public function sendinfo($id)
+	{
+		# code...
 	}
 	public function edit($id)
 	{

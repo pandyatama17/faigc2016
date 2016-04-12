@@ -22,7 +22,6 @@
          <tr class="gray-bg">
             <th>NO.</th>
             <th>DATE</th>
-            <th>ROOM</th>
             <th>PROGAMME</th>
          </tr>
       </thead>
@@ -30,12 +29,6 @@
          <tr>
             <td>{{$num++}}</td>
             <td>Monday, 10 October 2016</td>
-            <td class="haslist">
-               <ul>
-                  <li>Surabaya room</li>
-                  <li>Bandung room</li>
-               </ul>
-            </td>
             <td class="haslist">
                <ul>
                   <li>FAI Executive Board Meeting</li>
@@ -48,11 +41,6 @@
             <td>Tuesday, 11 October 2016</td>
             <td class="haslist">
                <ul>
-                  <li>Jakarta room</li>
-               </ul>
-            </td>
-            <td class="haslist">
-               <ul>
                   <li>Commission Presidents' Group Meeting</li>
                </ul>
             </td>
@@ -60,13 +48,6 @@
          <tr>
             <td>{{$num++}}</td>
             <td>Wednesday, 12 October 2016</td>
-            <td class="haslist">
-               <ul>
-                  <li>Jakarta Room A</li>
-                  <li>Surabaya room</li>
-                  <li>Bandung room</li>
-               </ul>
-            </td>
             <td class="haslist">
                <ul>
                   <li>CASI Meeting</li>
@@ -80,12 +61,6 @@
             <td>Thursday, 13 October 2016</td>
             <td class="haslist">
                <ul>
-                  <li>Hibicus room, Frangipani room,<br>Bougenvile, Orchird, Bandung</li>
-                  <li>Nusantara room</li>
-               </ul>
-            </td>
-            <td class="haslist">
-               <ul>
                   <li>Workshops (5 room)<br>&nbsp;</li>
                   <li><b>Joint Award Ceremony &amp; Opening Dinner</b></li>
                </ul>
@@ -94,11 +69,6 @@
          <tr>
             <td>{{$num++}}</td>
             <td>Friday, 14 October 2016</td>
-            <td class="haslist">
-               <ul>
-                  <li>Nusantara room</li>
-               </ul>
-            </td>
             <td class="haslist">
                <ul>
                   <li>Plenary Session</li>
@@ -110,13 +80,6 @@
             <td>Saturday, 15 October 2016</td>
             <td class="haslist">
                <ul>
-                  <li>Nusantara</li>
-                  <li>Jakarta room</li>
-                  <li>Temple Garden</li>
-               </ul>
-            </td>
-            <td class="haslist">
-               <ul>
                   <li>Plenary Session</li>
                   <li>CASI Meeting</li>
                   <li>Closing Ceremony &amp; Gala Dinner</li>
@@ -126,11 +89,6 @@
          <tr>
             <td>{{$num++}}</td>
             <td>Sunday, 16 October 2016</td>
-            <td class="haslist">
-               <ul>
-                  <li>Bandung room</li>
-               </ul>
-            </td>
             <td class="haslist">
                <ul>
                   <li>Executive Board Meeting</li>

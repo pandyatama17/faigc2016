@@ -33,7 +33,8 @@
              <ul class="dropdown-menu">
                 <li><a href="{{url('program')}}">Conference Program</a></li>
                 <li><a href="{{url('schedule')}}">Conference Schedule</a></li>
-                <li><a href="http://www.aerotravel.co.id/en/tour/bali-tour-kintamani-3-days-2-nights.html" onclick="window.open($(this).attr('href'), 'newwindow', 'width=800, height=800'); return false;">Other Activity and City Tour</a></li>
+                <li><a href="{{url('tourntravel')}}">Other Activity and City Tour</a></li>
+                {{-- <li><a href="http://www.aerotravel.co.id/en/tour/bali-tour-kintamani-3-days-2-nights.html" onclick="window.open($(this).attr('href'), 'newwindow', 'width=800, height=800'); return false;">Other Activity and City Tour</a></li> --}}
              </ul>
            </li>
            <li @if($pagin == 'accomodation') class="active" @endif >
@@ -66,6 +67,8 @@
 </div>
 <br><br><br><br>
 <div class="clearfix"></div>
+<br><br><br><br>
+<br><br><br><br>
 @include('layouts.bootstrap.footer')
 </body>
 <script type="text/javascript">

@@ -1,3 +1,12 @@
+Participants are advised to book hotel accommodation for the duration of the conference. We have secured hotel accommodation at the Westin Nusa Dua Hotel. <br>
+Hotel accommodation is not included in the registration fee and should be settled together with the conference fee in advance. The negotiated, special room rate offers excellent value for money and includes breakfast, and city tax. <br>
+Any additional services (e.g. telephone, mini-bar, laundry, meals not included in the program) will be charged to you by the hotel at checkout. <br><br>
+
+If you do not need a hotel room, please click 'No Lodging Required' to continue the registration process.<br><br>
+
+Please note that it is only possible to book your hotel room online during registration. <br><br>
+
+Please be informed that the hotel is fully booked. Please contact us by email secretariat@faigc2016bali.com for more information.
       <div class="form-group">
          <label for="email" class="col-sm-3 control-label">Hotel Reservation<span class="red">*</span></label>
          <div class="col-sm-9">

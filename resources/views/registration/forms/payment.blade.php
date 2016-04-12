@@ -5,6 +5,8 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/all.css">
    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
    <div class="container-fluid">
+      <br><br><br>
+      <div class="clearfix"></div>
       <span class="lead">Total Cost : <span id="cost">IDR. {{number_format($m->cost,0,',','.')}},-</span></span>
       <span id="cc_help-block" class="help-block">this includes 3.65% admin fee</span>
       <br><br>
@@ -23,30 +25,29 @@
                <input type="radio" id="radio-doku" name="radio-payment" data-show="dokupayment-container" class="flat-green" value="doku">
                Credit Card
             </label>
-            <span class="help-block">select your payment Method   </span>
+            <span class="help-block">select your payment method</span>
          </div>
       </div>
       <br><br><br><br>
       <div class="clearfix"></div>
       <div class="col-md-12" id="dokupayment-container">
          <center>
-            <?php
-         	$transidmerchant = str_random(10);
-         ?>
             <div class="col-md-6 col-md-offset-3">
                <FORM NAME="order" METHOD="Post" ACTION="https://apps.myshortcart.com/payment/request-payment/" >
-            		<input type=hidden name="BASKET" value="FAIGC 2016 Bali Registration,{{Session::get('cc_cost')}}.00,1,{{Session::get('cc_cost')}}.00;">
+                  <input type=hidden name="BASKET" value="{{$basket}};">
+            		{{-- <input type=hidden name="BASKET" value="FAIGC 2016 Bali Registration,{{Session::get('cc_cost')}}.00,1,{{Session::get('cc_cost')}}.00;"> --}}
             		<input type=hidden name="STOREID" value="00329488">
-            		<input type=hidden name="TRANSIDMERCHANT" value="{{$transidmerchant}}">
-            		<input type=hidden name="AMOUNT" value="{{Session::get('cc_cost')}}.00">
+            		<input type=hidden name="TRANSIDMERCHANT" value="{{$m->key}}">
+            		<input type=hidden name="AMOUNT" value="{{$amount}}.00">
             		<input type=hidden name="URL" value="http://dev.faigc2016bali.com">
-            		<input type=hidden name="WORDS" value="{{sha1(Session::get('cc_cost').'.00'.'d9R2g8E6B3r5'.$transidmerchant)}}">
+                  <input type=hidden name="WORDS" value="{{$words}}">
+            		{{-- <input type=hidden name="WORDS" value="{{sha1(Session::get('cc_cost').'.00'.'d9R2g8E6B3r5'.$m->key)}}"> --}}
             		<input type=hidden name="CNAME" value="{{$m->name}}">
             		<input type=hidden name="CEMAIL" value="{{$m->email}}">
             		<input type=hidden name="CWPHONE" value="{{str_replace("+", "", $m->mobile)}}">
             		<input type=hidden name="CHPHONE" value="{{str_replace("+", "", $m->mobile)}}">
             		<input type=hidden name="CMPHONE" value="{{str_replace("+", "", $m->mobile)}}">
-            		<input type=hidden name="CADDRESS" value="{{$m->address_line_1}}">
+            		{{-- <input type=hidden name="CADDRESS" value="{{$m->address_line_1}}">
             		<input type=hidden name="CZIPCODE" value="{{$m->zip}}">
             		<input type=hidden name="BIRTHDATE" value="">
             		<input type=hidden name="CCITY" value="{{$m->city}}">
@@ -56,9 +57,9 @@
             		<input type=hidden name="SZIPCODE" value="">
             		<input type=hidden name="SCITY" value="">
             		<input type=hidden name="SSTATE" value="">
-            		<input type=hidden name="SCOUNTRY" value="">
+            		<input type=hidden name="SCOUNTRY" value=""> --}}
          		</FORM>
-               <img src="{{asset('images/transparent-logo-visa.png')}}" alt="Visa LOGO" class="img-responsive" onclick="$('form').submit()"/>
+               <img src="{{asset('images/transparent-logo-visa.png')}}" alt="Visa LOGO" class="img-responsive img-btn" onclick="$('form').submit()"/>
             </div>
          </center>
       </div>
@@ -92,6 +93,9 @@
          <p class="help-block">
             please confirm your payment by email to <br> <a href="mailto:secretariat@faigc2016bali.com" class="lead" style="color:#092567">secretariat@faigc2016bali.com</a><br> after your transfer is complete
          </p>
+         <br><br>
+         <div class="clearfix"></div>
+         <span class="lead">we will email this bank info after you click <a href="{{url('home')}}" class="btn btn-primary">This Button</a></span>
       </div>
    </div>
 

@@ -50,4 +50,10 @@ class MainController extends Controller {
 		->with('pagin', 'participants')
 		->with('participants', $participants);
 	}
+
+	public function tourntravel()
+	{
+		return view('home.tourntravel')
+		->with('pagin', 'schedule');
+	}
 }

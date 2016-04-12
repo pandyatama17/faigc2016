@@ -219,7 +219,6 @@ $(document).ready(function()
 
       // sub atendee
 
-
    $(document).on("keypress", 'form', function (e) {
         var code = e.keyCode || e.which;
         if (code == 13) {
@@ -228,98 +227,34 @@ $(document).ready(function()
         }
    });
 
-   $("#addperson_button").hide();
    $("#subatendees").hide();
    $("#subatendee_yes").click(function()
    {
-       $("#subatendees").show('slow');
+       $("#subatendees").fadeIn('slow',function()
+       {
+
+       });
    });
    $("#subatendee_no").click(function()
    {
-       $("#subatendees").hide('slow');
-   });
-
-   var personCost = 3000000;
-   var clicked = 1;
-   $("#okperson_button").click(function()
-   {
-      console.log(cost+"+"+personCost);
-       if($('#subatendee_name_'+clicked).val() == "" || !isEmail($('#subatendee_email_'+clicked).val()))
+       $("#subatendees").fadeOut('slow',function()
        {
-          if($('#subatendee_name_'+clicked).val() == "")
-          {
-             $('#subatendee_name_'+clicked).addClass('text-danger');
-             alert('fill data first!');
-             $('#subatendee_name_'+clicked).focus();
-          }
-          if (!isEmail($('#subatendee_email_'+clicked).val()))
-          {
-             $('#subatendee_email_'+clicked).addClass('text-danger');
-             alert('please enter valid email');
-             $('#subatendee_email_'+clicked).focus();
-          }
-       }
-       else
-       {
-          $("#subatendee_name_"+clicked).hide();
-          $("#subatendee_email_"+clicked).hide();
-          $("#name_field_"+clicked).append('<p class="form-control-static">'+$("#subatendee_name_"+clicked).val()+'</p>');
-          $("#email_field_"+clicked).append('<p class="form-control-static">'+$("#subatendee_email_"+clicked).val()+'</p>');
-          $("#validate_"+clicked).val('true')
-          console.log("On click : "+clicked);
-          cost = (personCost+cost);
-          console.log(cost);
-          $("#totalcost").text(rupiah(cost));
-          $("#costinput").val(cost);
-          $("#countdata").val(clicked);
-          $(this).hide();
-          $("#addperson_button").show();
-       }
-   });
-   $("#addperson_button").click(function()
-   {
-       if($("#subatendee_name_"+clicked).val() != "" || $("#subatendee_email_"+clicked).val() != "")
-       {
-
-             if($("#subatendee_name_"+clicked).is(":visible"))
-             {
-                $("#okperson_button").trigger('click');
-             }
-             if (clicked < 5)
-             {
-                clicked++;
-                $('#subatendees_table tr:last').after('<tr><td id="name_field_'+clicked+'"><input required name="name_'+clicked+'" id="subatendee_name_'+clicked+'" class="form-control"></td><td id="email_field_'+clicked+'"><input required type="email" name="email_'+clicked+'" id="subatendee_email_'+clicked+'" class="form-control"></td></tr>');
-                $('#hidden-control').append('<input type="hidden" name="validate_'+clicked+'" id="validate_'+clicked+'" value="false">');
-                $("#countdata").val(($("#countdata").val()*1) +1);
-                $("#okperson_button").show();
-                $(this).hide();
-                if (clicked == 5)
-                {
-                      $(this).hide();
-                      $("#okperson_butto3n").show();
-                }
-                console.log("Clicked : "+clicked);
-             }
-             else {
-                alert('maximum person reached!');
-             }
-          }
-          else
-          {
-             if($('#subatendee_name_'+clicked).val() == "")
-             {
-                $('#subatendee_name_'+clicked).addClass('text-danger');
-                alert('fill data first!');
-                $('#subatendee_name_'+clicked).focus();
-             }
-             if (!isEmail($('#subatendee_email_'+clicked).val()))
-             {
-                $('#subatendee_email_'+clicked).addClass('text-danger');
-                alert('please enter valid email');
-                $('#subatendee_email_'+clicked).focus();
-             }
-          }
+          $("#subattendee_table").find('tr:not(:first)' ).remove();
        });
+   });
+   if ($("#subatendees_table tr").length == 0)
+   {
+     $("#removeBtn").hide();
+   }
+   else {
+      $("#removeBtn").show();
+
+   }
+   $("#removeBtn").click(function()
+   {
+      rowCount = $("#subatendees_table tr").length;
+      $('email-control').trigger("change");
+   });
 
 
       //  hotel
@@ -560,4 +495,92 @@ function hidePreloader()
 {
    $("#preloader").hide();
    $("#mainNavbar").show();
+}
+function addRow() {
+    //debugger;
+    var personCost = 3000000;
+    cost += personCost;
+    $("#totalcost").text(rupiah(cost));
+    $("#costinput").val(cost);
+
+    var tableID="subattendee_table";
+    var table = document.getElementById(tableID);
+    var rowCount = table.rows.length;
+    if(rowCount<=5)
+    {
+        var row = table.insertRow(rowCount);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var element1 = document.createElement('input');
+        element1.type="text";
+        element1.id="name_"+rowCount;
+        element1.setAttribute('class','form-control');
+        element1.setAttribute('name','name_'+rowCount);
+        element1.setAttribute('required','required');
+        var element2 = document.createElement('input');
+        element2.type="email_";
+        element2.id="email"+rowCount;
+        element2.setAttribute('class','form-control email-control');
+        element2.setAttribute('name','email_'+rowCount);
+        element2.setAttribute('required','required');
+        element2.setAttribute("onchange","validateEmail(this);");
+        cell1.innerHTML = rowCount;
+        cell2.appendChild(element1);
+        cell3.appendChild(element2);
+        $("#addBtn").attr('readonly',true);
+    }
+    else
+    {
+      swal("Sorry...","Maximum Person Reached!","warning");
+    }
+    $("#removeBtn").show();
+
+}
+
+function removeRow()
+{
+   var personCost = 3000000;
+   cost -= personCost;
+   $("#totalcost").text(rupiah(cost));
+   $("#costinput").val(cost);
+   
+    var tableID="subattendee_table";
+    var table = document.getElementById(tableID);
+    var rowCount = table.rows.length;
+
+    if(rowCount>1){
+        table.deleteRow(-1);
+    }
+    if (rowCount -1 == 1)
+    {
+     $("#removeBtn").hide();
+    }
+    else {
+      $("#removeBtn").show();
+
+    }
+    console.log(rowCount-1);
+}
+function validateEmail(emailField){
+ var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+ if (reg.test(emailField.value) == false)
+ {
+      swal({
+         title:"Oops...",
+         text:'Invalid Email Address',
+         type:"warning"
+      },function(){
+         $('#'+emailField.id).focus();
+         console.log(emailField);
+      });
+      return false;
+ }
+ else
+ {
+     $("#addBtn").attr('readonly',false);
+ }
+
+ return true;
 }

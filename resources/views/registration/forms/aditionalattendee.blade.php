@@ -16,31 +16,14 @@
    </div>
 </div>
 <div id="subatendees">
-   <table class="table table-stripped" id="subatendees_table">
-      <thead>
-         <th>name</th>
-         <th>email</th>
-      </thead>
-      <tbody>
-         <tr>
-            <td id="name_field_1">
-               <input name="name_1" id="subatendee_name_1" class="form-control">
-            </td>
-            <td id="email_field_1">
-               <input type="email" name="email_1" id="subatendee_email_1" class="form-control">
-            </td>
-            <td>
-               <button type="button" class="btn btn-primary" id="okperson_button" data-action="none" name="button"><span class="glyphicon glyphicon-ok"></span> Submit</button>
-            </td>
-         </tr>
-      </tbody>
+   <table id="subattendee_table" class="table">
+      <tr>
+         <td>No.</td>
+         <td>Name</td>
+         <td>Email</td>
+      </tr>
    </table>
-   <table>
-      <tfoot>
-         <th>
-            <span class="help-block">Click ok to register a person or click add to register new person </span>
-         </th>
-      </tfoot>
-   </table>
-   <button type="button" class="btn btn-primary" id="addperson_button" data-action="add" name="button"><span class="glyphicon glyphicon-plus"></span> Add</button>
+   <button type="button" onclick="addRow();" class="btn btn-success" id="addBtn">Add</button>
+   <button type="button" onclick="removeRow();" class="btn btn-danger" id="removeBtn">Remove</button>
+   <div class="clearfix"></div>
 </div>

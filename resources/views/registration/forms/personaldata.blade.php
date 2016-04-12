@@ -5,7 +5,7 @@
 <div class="form-group">
    <label for="email" class="col-sm-3 control-label">Email<?=$req ?></label>
    <div class="col-sm-9">
-      <input required type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{Session::get('email')}}">
+      <input required type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{Session::get('email')}}" readonly>
    </div>
 </div>
 <div class="clearfix"></div><br>

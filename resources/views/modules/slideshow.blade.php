@@ -29,7 +29,7 @@
       <img src="{{asset('images/slideshow/1.jpg')}}" alt="WELCOME TO THE CONFERENCE IN PARADISE">
       <div class="carousel-caption">
          {{-- <h1>WELCOME TO THE CONFERENCE IN PARADISE</h1> --}}
-         <p>FAI General Converence 2016 will held in 'The Land of God', Bali - Indonesia</p>
+         <p>FAI General Conference 2016 will held in 'The Land of God', Bali - Indonesia</p>
       </div>
     </div>
     <div class="item">
@@ -42,7 +42,7 @@
       <img src="{{asset('images/slideshow/2.jpg')}}" alt="UNIQUE CULTURE">
       <div class="carousel-caption">
          {{-- <h1>UNIQUE CULTURE</h1> --}}
-         <p>always smilling and welcoming you after make some decission...</p>
+         <p>always smilling and welcoming you after make some decision...</p>
       </div>
     </div>
     <div class="item">

@@ -24,6 +24,7 @@ Route::any('/accomodation', 'MainController@accomodation');
 Route::any('/gallery', 'MainController@gallery');
 Route::any('/contact', 'MainController@contact');
 Route::any('/participants', 'MainController@participants');
+Route::any('/tourntravel', 'MainController@tourntravel');
 Route::get('/sampleemail', function()
 {
    return view('mail.registration_success')
@@ -140,4 +141,14 @@ Route::any("/payment/success",function()
 {
    return view('registration.forms.notif')
    ->with('pagin', 'registration');
+});
+Route::get('showdummypage/subattendee', function()
+{
+   return view('dummy.aditionalattendee')
+   ->with('pagin', 'registration');
+});
+Route::post('dummypost/subattendee', function()
+{
+   $r = Input::all();
+   return $r;
 });

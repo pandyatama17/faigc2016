@@ -10,7 +10,7 @@
       <br><br>
       Just follow the instructions appearing on your screen to go through the registration process smoothly.
       <br><br>
-      When you have finalized your registration, you will receive an automatic email confirmation within a few minutes. If you do not receive a confirmation email, please contact the FAI Conference Secretariat (<a href="#">info@faigc2016bali.com</a>).
+      When you have finalized your registration, you will receive an automatic email confirmation within a few minutes. If you do not receive a confirmation email, please contact the FAI Conference Secretariat (<a href="#">secretariat@faigc2016bali.com</a>).
    </p>
    <br><br>
    <div class="col-md-2 col-md-offset-5">
